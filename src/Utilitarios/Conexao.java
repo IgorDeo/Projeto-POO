@@ -27,7 +27,8 @@ public class Conexao {
     public Conexao(){
         try {
             con = DriverManager.getConnection(url, usuario, senha);
-            JOptionPane.showMessageDialog(null, "Conectado com sucesso", "Conectado", 1);
+            con.setAutoCommit(false);
+            //JOptionPane.showMessageDialog(null, "Conectado com sucesso", "Conectado", 1);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao Conectar ao Banco de Dados", "Erro", 0);
         }
