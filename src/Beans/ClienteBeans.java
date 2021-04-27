@@ -6,7 +6,7 @@ package Beans;
 
 
 public class ClienteBeans {
-    private int codigo;
+    private int id;
     private String nome;
     private String rua;
     private String bairro;
@@ -18,12 +18,12 @@ public class ClienteBeans {
         
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setId(int codigo) {
+        this.id = codigo;
     }
 
     public String getNome() {

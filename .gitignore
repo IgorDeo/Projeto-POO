@@ -24,3 +24,4 @@ hs_err_pid*
 
 mysql-connector-java-8.0.24.jar
 /build/
+/dist/

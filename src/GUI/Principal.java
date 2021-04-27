@@ -9,6 +9,8 @@ import Utilitarios.FundoTela;
 import javax.swing.JFrame;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import javax.swing.ImageIcon;
+
 
 /**
  *
@@ -23,8 +25,13 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         //setExtendedState(JFrame.MAXIMIZED_BOTH); //Essa linha faz com que a tela inicie no tamanho do monitor utilizado
         setLayout(new GridLayout());
-        tela = new FundoTela("imagens/background_inicial.jpg");
+        tela = new FundoTela("/Icones/background_inicial.jpg");
         getContentPane().add(tela);
+        
+        ImageIcon icone = new ImageIcon(getClass().getResource("/Icones/ico_cardapio.png"));
+        setIconImage(icone.getImage());
+        
+        
         
         
     }
@@ -54,8 +61,10 @@ public class Principal extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/inserir-32.png"))); // NOI18N
         jMenu1.setText("Cadastro");
 
+        menuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_clientes.png"))); // NOI18N
         menuClientes.setText("Clientes");
         menuClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,27 +73,33 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(menuClientes);
 
+        menuFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_func.png"))); // NOI18N
         menuFuncionarios.setText("Funcionários");
         jMenu1.add(menuFuncionarios);
 
+        menuCardapio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_cardapio.png"))); // NOI18N
         menuCardapio.setText("Cardápio");
         jMenu1.add(menuCardapio);
 
+        menuEntregador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_boy.png"))); // NOI18N
         menuEntregador.setText("Entregador");
         jMenu1.add(menuEntregador);
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_caixa.png"))); // NOI18N
         jMenu2.setText("Caixa");
 
-        jMenuItem5.setText("Pedido");
+        jMenuItem5.setText("Pedidos");
         jMenu2.add(jMenuItem5);
 
         jMenuBar1.add(jMenu2);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_rel.png"))); // NOI18N
         jMenu4.setText("Relatórios");
         jMenuBar1.add(jMenu4);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_sair.png"))); // NOI18N
         jMenu3.setText("Sair");
         jMenuBar1.add(jMenu3);
 
@@ -98,7 +113,7 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 266, Short.MAX_VALUE)
         );
 
         pack();

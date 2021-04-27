@@ -5,6 +5,7 @@
  */
 package Utilitarios;
 
+import GUI.Principal;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -18,7 +19,7 @@ public class FundoTela extends JDesktopPane {
     private Image imagem;
     
     public FundoTela(String imagem){
-        this.imagem = new ImageIcon(imagem).getImage();
+        this.imagem = new ImageIcon(Principal.class.getResource(imagem)).getImage();
     }
     
     @Override
