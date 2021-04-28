@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23-Abr-2021 às 22:26
+-- Tempo de geração: 28-Abr-2021 às 03:51
 -- Versão do servidor: 10.4.18-MariaDB
 -- versão do PHP: 8.0.3
 
@@ -28,18 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cardapio` (
-  `card_id` int(11) NOT NULL,
+  `card_id` int(10) NOT NULL,
   `card_descricao` varchar(100) NOT NULL,
   `card_tipo` varchar(100) NOT NULL,
   `card_valor` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `cardapio`
---
-
-INSERT INTO `cardapio` (`card_id`, `card_descricao`, `card_tipo`, `card_valor`) VALUES
-(1, 'Pizza Calabresa', 'Média', '20.00');
 
 -- --------------------------------------------------------
 
@@ -48,7 +41,7 @@ INSERT INTO `cardapio` (`card_id`, `card_descricao`, `card_tipo`, `card_valor`) 
 --
 
 CREATE TABLE `clientes` (
-  `cliente_id` int(11) NOT NULL,
+  `cliente_id` int(10) NOT NULL,
   `cliente_nome` varchar(100) NOT NULL,
   `cliente_rua` varchar(100) NOT NULL,
   `cliente_bairro` varchar(100) NOT NULL,
@@ -61,7 +54,11 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`cliente_id`, `cliente_nome`, `cliente_rua`, `cliente_bairro`, `cliente_telefone`, `cliente_data_cadastro`) VALUES
-(1, 'Vitor', 'Rua X', 'Bairro Y', '21912345678', '2021-04-21');
+(2, 'Igor Deo', 'Rua José Higino', 'Tijuca', '(22) 22222-2222', '2021-04-26'),
+(3, 'Vitor', 'dasdas', 'dasdas', '(22) 22222-2222', '2021-04-26'),
+(4, 'Clara Lino', 'Rua Scylla', 'Itaipu', '(22) 22222-2222', '2021-04-26'),
+(5, 'Jorge', 'Rua jose', 'Tijuca', '(11) 11111-1111', '2021-04-26'),
+(6, 'Lucas Dias', 'aaaaaa', 'aaaaaa', '(22) 22222-2222', '2021-04-27');
 
 -- --------------------------------------------------------
 
@@ -70,7 +67,7 @@ INSERT INTO `clientes` (`cliente_id`, `cliente_nome`, `cliente_rua`, `cliente_ba
 --
 
 CREATE TABLE `entregadores` (
-  `entre_id` int(11) NOT NULL,
+  `entre_id` int(10) NOT NULL,
   `entre_nome` varchar(100) NOT NULL,
   `entre_status` varchar(100) NOT NULL,
   `entre_data_cadastro` date NOT NULL
@@ -81,7 +78,7 @@ CREATE TABLE `entregadores` (
 --
 
 INSERT INTO `entregadores` (`entre_id`, `entre_nome`, `entre_status`, `entre_data_cadastro`) VALUES
-(1, 'Pietro', 'Staff', '2021-04-21');
+(1, 'Claudio cesar', 'Livre', '2021-04-27');
 
 -- --------------------------------------------------------
 
@@ -90,10 +87,9 @@ INSERT INTO `entregadores` (`entre_id`, `entre_nome`, `entre_status`, `entre_dat
 --
 
 CREATE TABLE `funcionarios` (
-  `fun_id` int(11) NOT NULL,
+  `fun_id` int(10) NOT NULL,
   `fun_nome` varchar(100) NOT NULL,
   `fun_cargo` varchar(100) NOT NULL,
-  `fun_permissao` varchar(100) NOT NULL,
   `fun_data_cadastro` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -101,8 +97,9 @@ CREATE TABLE `funcionarios` (
 -- Extraindo dados da tabela `funcionarios`
 --
 
-INSERT INTO `funcionarios` (`fun_id`, `fun_nome`, `fun_cargo`, `fun_permissao`, `fun_data_cadastro`) VALUES
-(1, 'Igor', 'Garçom', 'Staff', '2021-04-21');
+INSERT INTO `funcionarios` (`fun_id`, `fun_nome`, `fun_cargo`, `fun_data_cadastro`) VALUES
+(1, 'Pietro Lancaster', 'Caixa', '2021-04-27'),
+(2, 'Vitor', 'Gerente', '2021-04-27');
 
 -- --------------------------------------------------------
 
@@ -114,7 +111,7 @@ CREATE TABLE `item` (
   `item_id` int(11) NOT NULL,
   `item_ent_id` int(11) NOT NULL,
   `item_fun_id` int(11) NOT NULL,
-  `item_cliente_id` int(11) NOT NULL,
+  `item_cli_id` int(11) NOT NULL,
   `item_ped_id` int(11) NOT NULL,
   `item_card_id` int(11) NOT NULL,
   `item_quantidade` int(11) NOT NULL
@@ -127,20 +124,14 @@ CREATE TABLE `item` (
 --
 
 CREATE TABLE `pedidos` (
-  `ped_id` int(11) NOT NULL,
+  `ped_id` int(10) NOT NULL,
   `ped_data` date NOT NULL,
   `ped_total` decimal(10,2) NOT NULL,
-  `ped_cliente_id` int(11) NOT NULL,
-  `ped_fun_id` int(11) NOT NULL,
-  `ped_ent_id` int(11) NOT NULL
+  `ped_cliente_id` int(10) NOT NULL,
+  `ped_fun_id` int(10) NOT NULL,
+  `ped_ent_id` int(10) NOT NULL,
+  `ped_status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `pedidos`
---
-
-INSERT INTO `pedidos` (`ped_id`, `ped_data`, `ped_total`, `ped_cliente_id`, `ped_fun_id`, `ped_ent_id`) VALUES
-(2, '2021-04-21', '100.00', 1, 1, 1);
 
 --
 -- Índices para tabelas despejadas
@@ -174,12 +165,12 @@ ALTER TABLE `funcionarios`
 -- Índices para tabela `item`
 --
 ALTER TABLE `item`
-  ADD PRIMARY KEY (`item_id`,`item_ent_id`,`item_fun_id`,`item_cliente_id`,`item_ped_id`,`item_card_id`,`item_quantidade`),
-  ADD KEY `item_ent_id` (`item_ent_id`),
-  ADD KEY `item_fun_id` (`item_fun_id`),
-  ADD KEY `item_cliente_id` (`item_cliente_id`),
-  ADD KEY `item_ped_id` (`item_ped_id`),
-  ADD KEY `item_card_id` (`item_card_id`);
+  ADD PRIMARY KEY (`item_id`,`item_ent_id`,`item_cli_id`,`item_ped_id`,`item_card_id`,`item_quantidade`),
+  ADD KEY `ItemPedido` (`item_ped_id`,`item_cli_id`,`item_fun_id`,`item_ent_id`),
+  ADD KEY `ItemCardapio` (`item_card_id`),
+  ADD KEY `ItemCliente` (`item_cli_id`),
+  ADD KEY `ItemEntregador` (`item_ent_id`),
+  ADD KEY `ItemFuncionario` (`item_fun_id`);
 
 --
 -- Índices para tabela `pedidos`
@@ -198,37 +189,37 @@ ALTER TABLE `pedidos`
 -- AUTO_INCREMENT de tabela `cardapio`
 --
 ALTER TABLE `cardapio`
-  MODIFY `card_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `card_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `cliente_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cliente_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `entregadores`
 --
 ALTER TABLE `entregadores`
-  MODIFY `entre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `entre_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `funcionarios`
 --
 ALTER TABLE `funcionarios`
-  MODIFY `fun_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `fun_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `ped_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ped_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para despejos de tabelas
@@ -238,19 +229,19 @@ ALTER TABLE `pedidos`
 -- Limitadores para a tabela `item`
 --
 ALTER TABLE `item`
-  ADD CONSTRAINT `ItemCliente` FOREIGN KEY (`item_cliente_id`) REFERENCES `clientes` (`cliente_id`),
+  ADD CONSTRAINT `ItemCardapio` FOREIGN KEY (`item_card_id`) REFERENCES `cardapio` (`card_id`),
+  ADD CONSTRAINT `ItemCliente` FOREIGN KEY (`item_cli_id`) REFERENCES `clientes` (`cliente_id`),
   ADD CONSTRAINT `ItemEntregador` FOREIGN KEY (`item_ent_id`) REFERENCES `entregadores` (`entre_id`),
   ADD CONSTRAINT `ItemFuncionario` FOREIGN KEY (`item_fun_id`) REFERENCES `funcionarios` (`fun_id`),
-  ADD CONSTRAINT `ItemPedido` FOREIGN KEY (`item_ped_id`) REFERENCES `pedidos` (`ped_id`),
-  ADD CONSTRAINT `itemCardapio` FOREIGN KEY (`item_card_id`) REFERENCES `cardapio` (`card_id`);
+  ADD CONSTRAINT `ItemPedido` FOREIGN KEY (`item_ped_id`) REFERENCES `pedidos` (`ped_id`);
 
 --
 -- Limitadores para a tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  ADD CONSTRAINT `PedidoCliente` FOREIGN KEY (`ped_cliente_id`) REFERENCES `clientes` (`cliente_id`),
-  ADD CONSTRAINT `PedidoEntregador` FOREIGN KEY (`ped_ent_id`) REFERENCES `entregadores` (`entre_id`),
-  ADD CONSTRAINT `PedidoFuncionario` FOREIGN KEY (`ped_fun_id`) REFERENCES `funcionarios` (`fun_id`);
+  ADD CONSTRAINT `ClientePedido` FOREIGN KEY (`ped_cliente_id`) REFERENCES `clientes` (`cliente_id`),
+  ADD CONSTRAINT `EntregadorPedido` FOREIGN KEY (`ped_ent_id`) REFERENCES `entregadores` (`entre_id`),
+  ADD CONSTRAINT `FuncionarioPedido` FOREIGN KEY (`ped_fun_id`) REFERENCES `funcionarios` (`fun_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -232,7 +232,7 @@ public class FuncionarioTela extends javax.swing.JInternalFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        setBounds(200, 50, 500, 491);
+        setBounds(500, 0, 500, 491);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed

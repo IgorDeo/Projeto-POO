@@ -17,14 +17,14 @@ public class CardapioController {
     
     public boolean verificarDados(CardapioBeans cardapio){
         if(cardapio.getDescricao().equals("")){
-            JOptionPane.showMessageDialog(null, "Peencha o campo Nome", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
+            JOptionPane.showMessageDialog(null, "Peencha o campo Descrição", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
             return false;
         }
         if(cardapio.getTipo().equals("Selecione um tipo")){
             JOptionPane.showMessageDialog(null, "Selecione um tipo", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
             return false;
         }
-        if(cardapio.getValor().equals("")){
+        if(cardapio.getValor() == 0){
             JOptionPane.showMessageDialog(null, "Preencha o valor", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
             return false;
         }
@@ -46,14 +46,14 @@ public class CardapioController {
     
     public boolean verificarDadosEditar(CardapioBeans cardapio){
         if(cardapio.getDescricao().equals("")){
-            JOptionPane.showMessageDialog(null, "Peencha o campo Nome", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
+            JOptionPane.showMessageDialog(null, "Peencha o campo Descrição", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
             return false;
         }
         if(cardapio.getTipo().equals("Selecione um tipo")){
             JOptionPane.showMessageDialog(null, "Selecione um tipo", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
             return false;
         }
-        if(cardapio.getValor().equals("")){
+        if(cardapio.getValor() == 0){
             JOptionPane.showMessageDialog(null, "Preencha o valor", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
             return false;
         }

@@ -65,7 +65,7 @@ public class CardapioTela extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Cadastro Funcionários");
+        setTitle("Cadastro Cardápio");
 
         jLabel1.setText("Id");
 
@@ -223,14 +223,16 @@ public class CardapioTela extends javax.swing.JInternalFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        setBounds(200, 50, 500, 491);
+        setBounds(1000, 0, 500, 491);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         habilitarCampos(true);
         cardapioC.controleDeCodigo();
         txtId.setText(cardapioC.controleDeCodigo());
-        
+        txtDescricao.setText("");
+        txtValor.setText("0");
+        cbTipo.setSelectedIndex(0);
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
