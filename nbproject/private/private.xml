@@ -3,12 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Projects%20Folders/UFF/ProjetoRestaurantePOO/src/DAO/ClienteDAO.java</file>
-            <file>file:/C:/Projects%20Folders/UFF/ProjetoRestaurantePOO/src/Utilitarios/FundoTela.java</file>
-            <file>file:/C:/Projects%20Folders/UFF/ProjetoRestaurantePOO/src/GUI/ClienteTela.java</file>
-            <file>file:/C:/Projects%20Folders/UFF/ProjetoRestaurantePOO/src/Beans/ClienteBeans.java</file>
+            <file>file:/C:/Projects%20Folders/UFF/ProjetoRestaurantePOO/src/GUI/PedidoTela.java</file>
             <file>file:/C:/Projects%20Folders/UFF/ProjetoRestaurantePOO/src/GUI/Principal.java</file>
-            <file>file:/C:/Projects%20Folders/UFF/ProjetoRestaurantePOO/src/Controller/ClienteController.java</file>
         </group>
     </open-files>
 </project-private>

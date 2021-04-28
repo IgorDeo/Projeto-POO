@@ -7,6 +7,7 @@ package DAO;
 import Beans.ClienteBeans;
 import Utilitarios.Conexao;
 import Utilitarios.Corretores;
+import java.util.List;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -122,6 +123,22 @@ public class ClienteDAO {
         } catch (SQLException ex) {
             //JOptionPane.showMessageDialog(null, ex, "Erro", 0, new ImageIcon("imagens/ico_sair.png"));
             JOptionPane.showMessageDialog(null, "Erro ao Editar ao Banco de Dados", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
+        }
+    }
+    
+    public void buscarCliente(String pesquisa, List<String> lista){  
+        try {
+            String SQLSelection = "select * from clientes where cliente_nome like '%" + pesquisa + "%' ";
+            PreparedStatement st;
+            st = Conexao.getConnection().prepareStatement(SQLSelection);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                lista.add(rs.getString("cli_id")+ " - " + rs.getString("cli_nome"));
+                
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Buscar Cliente", "Erro", 0, new ImageIcon(getClass().getResource("imagens/ico_sair.png")));
         }
     }
 }

@@ -23,6 +23,7 @@ public class Principal extends javax.swing.JFrame {
     FuncionarioTela funcionarioTela;
     EntregadorTela entregadorTela;
     CardapioTela cardapioTela;
+    PedidoTela pedidoTela;
     
     public Principal() {
         initComponents();
@@ -49,23 +50,23 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuCadastro = new javax.swing.JMenu();
         menuClientes = new javax.swing.JMenuItem();
         menuFuncionarios = new javax.swing.JMenuItem();
         menuCardapio = new javax.swing.JMenuItem();
         menuEntregador = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        menuCaixa = new javax.swing.JMenu();
+        menuPedidos = new javax.swing.JMenuItem();
+        menuRelatorios = new javax.swing.JMenu();
+        menuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurante ID-VT");
         setPreferredSize(new java.awt.Dimension(1600, 1000));
         setResizable(false);
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/inserir-32.png"))); // NOI18N
-        jMenu1.setText("Cadastro");
+        menuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/inserir-32.png"))); // NOI18N
+        menuCadastro.setText("Cadastro");
 
         menuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_clientes.png"))); // NOI18N
         menuClientes.setText("Clientes");
@@ -74,7 +75,7 @@ public class Principal extends javax.swing.JFrame {
                 menuClientesActionPerformed(evt);
             }
         });
-        jMenu1.add(menuClientes);
+        menuCadastro.add(menuClientes);
 
         menuFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_func.png"))); // NOI18N
         menuFuncionarios.setText("Funcionários");
@@ -83,7 +84,7 @@ public class Principal extends javax.swing.JFrame {
                 menuFuncionariosActionPerformed(evt);
             }
         });
-        jMenu1.add(menuFuncionarios);
+        menuCadastro.add(menuFuncionarios);
 
         menuCardapio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_cardapio.png"))); // NOI18N
         menuCardapio.setText("Cardápio");
@@ -92,7 +93,7 @@ public class Principal extends javax.swing.JFrame {
                 menuCardapioActionPerformed(evt);
             }
         });
-        jMenu1.add(menuCardapio);
+        menuCadastro.add(menuCardapio);
 
         menuEntregador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_boy.png"))); // NOI18N
         menuEntregador.setText("Entregador");
@@ -101,25 +102,36 @@ public class Principal extends javax.swing.JFrame {
                 menuEntregadorActionPerformed(evt);
             }
         });
-        jMenu1.add(menuEntregador);
+        menuCadastro.add(menuEntregador);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuCadastro);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_caixa.png"))); // NOI18N
-        jMenu2.setText("Caixa");
+        menuCaixa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_caixa.png"))); // NOI18N
+        menuCaixa.setText("Caixa");
 
-        jMenuItem5.setText("Pedidos");
-        jMenu2.add(jMenuItem5);
+        menuPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_pedidos.png"))); // NOI18N
+        menuPedidos.setText("Pedidos");
+        menuPedidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPedidosActionPerformed(evt);
+            }
+        });
+        menuCaixa.add(menuPedidos);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuCaixa);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_rel.png"))); // NOI18N
-        jMenu4.setText("Relatórios");
-        jMenuBar1.add(jMenu4);
+        menuRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_rel.png"))); // NOI18N
+        menuRelatorios.setText("Relatórios");
+        jMenuBar1.add(menuRelatorios);
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_sair.png"))); // NOI18N
-        jMenu3.setText("Sair");
-        jMenuBar1.add(jMenu3);
+        menuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_sair.png"))); // NOI18N
+        menuSair.setText("Sair");
+        menuSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuSairMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(menuSair);
 
         setJMenuBar(jMenuBar1);
 
@@ -161,6 +173,16 @@ public class Principal extends javax.swing.JFrame {
         cardapioTela.setVisible(true);
     }//GEN-LAST:event_menuCardapioActionPerformed
 
+    private void menuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSairMouseClicked
+        dispose();
+    }//GEN-LAST:event_menuSairMouseClicked
+
+    private void menuPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPedidosActionPerformed
+        pedidoTela = new PedidoTela();
+        telaPrincipal.add(pedidoTela);
+        pedidoTela.setVisible(true);
+    }//GEN-LAST:event_menuPedidosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -197,15 +219,15 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenu menuCaixa;
     private javax.swing.JMenuItem menuCardapio;
     private javax.swing.JMenuItem menuClientes;
     private javax.swing.JMenuItem menuEntregador;
     private javax.swing.JMenuItem menuFuncionarios;
+    private javax.swing.JMenuItem menuPedidos;
+    private javax.swing.JMenu menuRelatorios;
+    private javax.swing.JMenu menuSair;
     // End of variables declaration//GEN-END:variables
 }
