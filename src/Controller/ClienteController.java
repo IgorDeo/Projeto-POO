@@ -20,19 +20,19 @@ public class ClienteController {
     
     public boolean verificarDados(ClienteBeans cliente){
         if(cliente.getNome().equals("")){
-            JOptionPane.showMessageDialog(null, "Peencha o campo Nome", "Erro", 0, new ImageIcon("imagens/ico_sair.png"));
+            JOptionPane.showMessageDialog(null, "Peencha o campo Nome", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
             return false;
         }
         if(cliente.getRua().equals("")){
-            JOptionPane.showMessageDialog(null, "Peencha o campo Rua", "Erro", 0, new ImageIcon("imagens/ico_sair.png"));
+            JOptionPane.showMessageDialog(null, "Peencha o campo Rua", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
             return false;
         }
         if(cliente.getBairro().equals("")){
-            JOptionPane.showMessageDialog(null, "Peencha o campo Bairro", "Erro", 0, new ImageIcon("imagens/ico_sair.png"));
+            JOptionPane.showMessageDialog(null, "Peencha o campo Bairro", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
             return false;
         }
         if(cliente.getTelefone().equals("(  )      -    ")){
-            JOptionPane.showMessageDialog(null, "Peencha o campo Ttelefone", "Erro", 0, new ImageIcon("imagens/ico_sair.png"));
+            JOptionPane.showMessageDialog(null, "Peencha o campo Ttelefone", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
             return false;
         }
         clienteD.cadastrarCliente(cliente);
@@ -53,19 +53,19 @@ public class ClienteController {
     
     public boolean verificarDadosEditar(ClienteBeans cliente){
         if(cliente.getNome().equals("")){
-            JOptionPane.showMessageDialog(null, "Peencha o campo Nome", "Erro", 0, new ImageIcon("imagens/ico_sair.png"));
+            JOptionPane.showMessageDialog(null, "Peencha o campo Nome", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
             return false;
         }
         if(cliente.getRua().equals("")){
-            JOptionPane.showMessageDialog(null, "Peencha o campo Rua", "Erro", 0, new ImageIcon("imagens/ico_sair.png"));
+            JOptionPane.showMessageDialog(null, "Peencha o campo Rua", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
             return false;
         }
         if(cliente.getBairro().equals("")){
-            JOptionPane.showMessageDialog(null, "Peencha o campo Bairro", "Erro", 0, new ImageIcon("imagens/ico_sair.png"));
+            JOptionPane.showMessageDialog(null, "Peencha o campo Bairro", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
             return false;
         }
         if(cliente.getTelefone().equals("(  )      -    ")){
-            JOptionPane.showMessageDialog(null, "Peencha o campo Ttelefone", "Erro", 0, new ImageIcon("imagens/ico_sair.png"));
+            JOptionPane.showMessageDialog(null, "Peencha o campo Ttelefone", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
             return false;
         }
         clienteD.editarCliente(cliente);

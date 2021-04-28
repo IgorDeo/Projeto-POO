@@ -1,10 +1,7 @@
-/*
- * Projeto final de Programa��o Orientada a Objetos
- * Each line should be prefixed with  * 
- */
 package DAO;
 
-import Beans.ClienteBeans;
+
+import Beans.FuncionarioBeans;
 import Utilitarios.Conexao;
 import Utilitarios.Corretores;
 import java.sql.PreparedStatement;
@@ -16,27 +13,21 @@ import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author igord
- */
-public class ClienteDAO {
+public class FuncionarioDAO {
     
     
-    public ClienteDAO(){
+    public FuncionarioDAO(){
         
         
     }
     
-    public void cadastrarCliente(ClienteBeans cliente){
+    public void cadastrarFuncionario(FuncionarioBeans funcionario){
         try {
-            String SQLInsertion = "insert into clientes (cliente_nome, cliente_rua, cliente_bairro, cliente_telefone, cliente_data_cadastro) values (?,?,?,?,?)";
+            String SQLInsertion = "insert into funcionarios(fun_nome, fun_cargo, fun_data_cadastro) values (?,?,?)";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLInsertion);
-            st.setString(1, cliente.getNome());
-            st.setString(2, cliente.getRua());
-            st.setString(3, cliente.getBairro());
-            st.setString(4, cliente.getTelefone());
-            st.setString(5, Corretores.converterDataSQL(cliente.getDataCad()));
+            st.setString(1, funcionario.getNome());
+            st.setString(2, funcionario.getCargo());
+            st.setString(3, Corretores.converterDataSQL(funcionario.getDataCad()));
             
             st.execute();
             Conexao.getConnection().commit();
@@ -49,13 +40,13 @@ public class ClienteDAO {
         
     }
     
-    public String proximoCliente(){
-        String SQLSelection = "select * from clientes order by cliente_id desc limit 1 ";
+    public String proximoFuncionario(){
+        String SQLSelection = "select * from funcionarios order by fun_id desc limit 1 ";
         try {
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLSelection);
             ResultSet rs = st.executeQuery();
             if((rs.next())){
-                return (Integer.parseInt(rs.getString("cliente_id")) + 1) + "";
+                return (Integer.parseInt(rs.getString("fun_id")) + 1) + "";
             }else{
                 return "1";
             }
@@ -65,55 +56,53 @@ public class ClienteDAO {
         }      
     }
     
-    public void buscarCliente(String pesquisa, DefaultTableModel modelo){  
+    public void buscarFuncionario(String pesquisa, DefaultTableModel modelo){  
         try {
-            String SQLSelection = "select * from clientes where cliente_nome like '%" + pesquisa + "%' ";
+            String SQLSelection = "select * from funcionarios where fun_nome like '%" + pesquisa + "%' ";
             PreparedStatement st;
             st = Conexao.getConnection().prepareStatement(SQLSelection);
             ResultSet rs = st.executeQuery();
             while(rs.next()){
-                modelo.addRow(new Object[] {rs.getString("cliente_id"), rs.getString("cliente_nome"), rs.getString("cliente_rua"), rs.getString("cliente_bairro"), rs.getString("cliente_telefone")});
+                modelo.addRow(new Object[] {rs.getString("fun_id"), rs.getString("fun_nome"), rs.getString("fun_cargo"), Corretores.converterDataBr(rs.getString("fun_data_cadastro"))});
                 
             }
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Buscar Cliente", "Erro", 0, new ImageIcon(getClass().getResource("imagens/ico_sair.png")));
+            JOptionPane.showMessageDialog(null, "Erro ao Buscar Cliente", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
         }
     }
-    public ClienteBeans preencherCampos(int id){
-        ClienteBeans cliente;
-        cliente = new ClienteBeans();
+    
+    public FuncionarioBeans preencherCampos(int id){
+        FuncionarioBeans funcionario;
+        funcionario = new FuncionarioBeans();
         try {
-            String SQLSelection = "select * from clientes where cliente_id = ? ";
+            String SQLSelection = "select * from funcionarios where fun_id = ? ";
             PreparedStatement st;
             st = Conexao.getConnection().prepareStatement(SQLSelection);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             while(rs.next()){
-                cliente.setId(rs.getInt("cliente_id"));
-                cliente.setNome(rs.getString("cliente_nome"));
-                cliente.setRua(rs.getString("cliente_rua"));
-                cliente.setBairro(rs.getString("cliente_bairro"));
-                cliente.setTelefone(rs.getString("cliente_telefone"));
-                cliente.setDataCad(Corretores.converterDataBr((rs.getString("cliente_data_cadastro"))));
+                funcionario.setId(rs.getInt("fun_id"));
+                funcionario.setNome(rs.getString("fun_nome"));
+                funcionario.setCargo(rs.getString("fun_cargo"));
+                funcionario.setDataCad(Corretores.converterDataBr((rs.getString("fun_data_cadastro"))));
                 
             }
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Buscar Cliente", "Erro", 0, new ImageIcon(getClass().getResource("imagens/ico_sair.png")));
+            JOptionPane.showMessageDialog(null, "Erro ao Buscar Funcionario", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
+            //JOptionPane.showMessageDialog(null, ex.getMessage(), "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
         }
-        return cliente;
+        return funcionario;
     }
     
-    public void editarCliente(ClienteBeans cliente){
+    public void editarFuncionario(FuncionarioBeans funcionario){
         try {
-            String SQLInsertion = "update clientes set cliente_nome = ?, cliente_rua = ?, cliente_bairro = ?, cliente_telefone = ? where cliente_id = ?";
+            String SQLInsertion = "update funcionarios set fun_nome = ?, fun_cargo = ? where fun_id = ?";
             PreparedStatement st = Conexao.getConnection().prepareStatement(SQLInsertion);
-            st.setString(1, cliente.getNome());
-            st.setString(2, cliente.getRua());
-            st.setString(3, cliente.getBairro());
-            st.setString(4, cliente.getTelefone());
-            st.setInt(5, cliente.getId());
+            st.setString(1, funcionario.getNome());
+            st.setString(2, funcionario.getCargo());
+            st.setInt(3, funcionario.getId());
             
             st.execute();
             Conexao.getConnection().commit();

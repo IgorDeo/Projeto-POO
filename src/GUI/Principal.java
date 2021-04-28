@@ -18,15 +18,18 @@ import javax.swing.ImageIcon;
  */
 public class Principal extends javax.swing.JFrame {
 
-    FundoTela tela;
+    FundoTela telaPrincipal;
     ClienteTela clienteTela;
+    FuncionarioTela funcionarioTela;
+    EntregadorTela entregadorTela;
+    CardapioTela cardapioTela;
     
     public Principal() {
         initComponents();
         //setExtendedState(JFrame.MAXIMIZED_BOTH); //Essa linha faz com que a tela inicie no tamanho do monitor utilizado
         setLayout(new GridLayout());
-        tela = new FundoTela("/Icones/background_inicial.jpg");
-        getContentPane().add(tela);
+        telaPrincipal = new FundoTela("/Icones/background_inicial.jpg");
+        getContentPane().add(telaPrincipal);
         
         ImageIcon icone = new ImageIcon(getClass().getResource("/Icones/ico_cardapio.png"));
         setIconImage(icone.getImage());
@@ -58,7 +61,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurante ID-VT");
-        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1600, 1000));
         setResizable(false);
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/inserir-32.png"))); // NOI18N
@@ -75,14 +78,29 @@ public class Principal extends javax.swing.JFrame {
 
         menuFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_func.png"))); // NOI18N
         menuFuncionarios.setText("Funcionários");
+        menuFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFuncionariosActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuFuncionarios);
 
         menuCardapio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_cardapio.png"))); // NOI18N
         menuCardapio.setText("Cardápio");
+        menuCardapio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCardapioActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuCardapio);
 
         menuEntregador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_boy.png"))); // NOI18N
         menuEntregador.setText("Entregador");
+        menuEntregador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEntregadorActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuEntregador);
 
         jMenuBar1.add(jMenu1);
@@ -121,9 +139,27 @@ public class Principal extends javax.swing.JFrame {
 
     private void menuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientesActionPerformed
         clienteTela = new ClienteTela();
-        tela.add(clienteTela);
+        telaPrincipal.add(clienteTela);
         clienteTela.setVisible(true);
     }//GEN-LAST:event_menuClientesActionPerformed
+
+    private void menuFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFuncionariosActionPerformed
+        funcionarioTela = new FuncionarioTela();
+        telaPrincipal.add(funcionarioTela);
+        funcionarioTela.setVisible(true);
+    }//GEN-LAST:event_menuFuncionariosActionPerformed
+
+    private void menuEntregadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEntregadorActionPerformed
+        entregadorTela = new EntregadorTela();
+        telaPrincipal.add(entregadorTela);
+        entregadorTela.setVisible(true);
+    }//GEN-LAST:event_menuEntregadorActionPerformed
+
+    private void menuCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCardapioActionPerformed
+        cardapioTela = new CardapioTela();
+        telaPrincipal.add(cardapioTela);
+        cardapioTela.setVisible(true);
+    }//GEN-LAST:event_menuCardapioActionPerformed
 
     /**
      * @param args the command line arguments
