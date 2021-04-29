@@ -81,6 +81,23 @@ public class ClienteDAO {
             JOptionPane.showMessageDialog(null, "Erro ao Buscar Cliente", "Erro", 0, new ImageIcon(getClass().getResource("imagens/ico_sair.png")));
         }
     }
+    
+    public void buscarCliente(String pesquisa, List<String> lista){  
+        try {
+            String SQLSelection = "select * from clientes where cliente_nome like '%" + pesquisa + "%' ";
+            PreparedStatement st;
+            st = Conexao.getConnection().prepareStatement(SQLSelection);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                lista.add(rs.getString("cliente_id")+ " - " + rs.getString("cliente_nome"));
+                
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao Buscar Cliente", "Erro", 0, new ImageIcon(getClass().getResource("imagens/ico_sair.png")));
+        }
+    }
+    
     public ClienteBeans preencherCampos(int id){
         ClienteBeans cliente;
         cliente = new ClienteBeans();
@@ -126,19 +143,5 @@ public class ClienteDAO {
         }
     }
     
-    public void buscarCliente(String pesquisa, List<String> lista){  
-        try {
-            String SQLSelection = "select * from clientes where cliente_nome like '%" + pesquisa + "%' ";
-            PreparedStatement st;
-            st = Conexao.getConnection().prepareStatement(SQLSelection);
-            ResultSet rs = st.executeQuery();
-            while(rs.next()){
-                lista.add(rs.getString("cli_id")+ " - " + rs.getString("cli_nome"));
-                
-            }
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao Buscar Cliente", "Erro", 0, new ImageIcon(getClass().getResource("imagens/ico_sair.png")));
-        }
-    }
+    
 }

@@ -111,6 +111,7 @@ public class Principal extends javax.swing.JFrame {
 
         menuPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_pedidos.png"))); // NOI18N
         menuPedidos.setText("Pedidos");
+        menuPedidos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuPedidosActionPerformed(evt);

@@ -340,8 +340,6 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnRemover" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnCalcular" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="txtTotal" min="-2" pref="72" max="-2" attributes="0"/>
@@ -377,15 +375,12 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="btnAdd" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnRemover" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnRemover" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
                               <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtTotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnCalcular" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -414,7 +409,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtItem">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtItemActionPerformed"/>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtItemKeyReleased"/>
               </Events>
             </Component>
@@ -502,18 +496,10 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel30">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Total"/>
+                <Property name="text" type="java.lang.String" value="Total do Pedido"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtTotal">
-            </Component>
-            <Component class="javax.swing.JButton" name="btnCalcular">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Calcular"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCalcularActionPerformed"/>
-              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
               <AuxValues>
@@ -528,9 +514,9 @@
                       <Table columnCount="5" rowCount="0">
                         <Column editable="false" title="Id Item" type="java.lang.Object"/>
                         <Column editable="false" title="Descri&#xe7;&#xe3;o" type="java.lang.Object"/>
-                        <Column editable="true" title="Valor Unit&#xe1;rio" type="java.lang.Object"/>
+                        <Column editable="false" title="Valor Unit&#xe1;rio" type="java.lang.Object"/>
                         <Column editable="false" title="Quantidade" type="java.lang.Object"/>
-                        <Column editable="true" title="Total" type="java.lang.Object"/>
+                        <Column editable="false" title="Total" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
