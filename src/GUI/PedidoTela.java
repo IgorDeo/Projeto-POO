@@ -30,8 +30,10 @@ public class PedidoTela extends javax.swing.JInternalFrame {
     List<String> lista;
     List<String> listaDeItens;
     DecimalFormat formatoDecimal;
+    int idFuncionario;
+    SimpleDateFormat formatoHora;
     
-    public PedidoTela() {
+    public PedidoTela(int idFuncionario) {
         initComponents();
         habilitarCampos(false);
         modelo = (DefaultTableModel)tabela.getModel();
@@ -47,6 +49,12 @@ public class PedidoTela extends javax.swing.JInternalFrame {
         
         formatoDecimal = new DecimalFormat("0.00");
         tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
+        this.idFuncionario = idFuncionario;
+        
+        dataAtual = new Date();
+        formatoData = new SimpleDateFormat("yyyy-MM-dd");
+        formatoHora = new SimpleDateFormat("HH:mm:ss");
     }
 
 
@@ -412,12 +420,13 @@ public class PedidoTela extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd)
-                    .addComponent(btnRemover)
+                .addGroup(painelPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel30)
-                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(painelPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAdd)
+                        .addComponent(btnRemover)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
@@ -525,9 +534,9 @@ public class PedidoTela extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnFecharPedidoActionPerformed
 
     private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
-        //populaBeans();
-        //pedidoC.controledePedido(txtId.getText(), CodigoFuncionario + "", txtTotal.getText(), tabela.getRowCount(), PedidoB);
-        //limparFinalizar();
+        popularBeans();
+        pedidoC.controleDePedido(txtId.getText(), idFuncionario + "", txtTotal.getText(), tabela.getRowCount(), pedidoB);
+        limparFinalizar();
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
 
@@ -593,12 +602,37 @@ final void limparCampos(){
 final void calcularTotal(){
     double totalPedido = 0;
     for(int i = 0; i < tabela.getRowCount();i++){
-        totalPedido += Double.parseDouble(modelo.getValueAt(i, 4).toString());
-        
+        totalPedido += Double.parseDouble(modelo.getValueAt(i, 4).toString());   
+    }
+    if(totalPedido > 0){
+        btnFinalizar.setEnabled(true);
     }
    //Resolver erro de formatação do valor total do pedido
     txtTotal.setText(formatoDecimal.format(totalPedido).replace('.',','));
 }
 
+final void popularBeans(){
+    dataAtual = new Date();
+    pedidoB.setIdCliente(Integer.parseInt(txtId.getText()));
+    pedidoB.setIdFuncionario(idFuncionario);
+    pedidoB.setIdEntregador(1);
+    pedidoB.setData(formatoData.format(dataAtual));
+    pedidoB.setHora(formatoHora.format(dataAtual));
+    pedidoB.setStatus("Pedido Aberto");
+    pedidoB.setValor(Double.parseDouble(txtTotal.getText().replace(',','.')));
+    for(int i = 0; i < tabela.getRowCount();i++){
+        pedidoB.setIdCardapio(Integer.parseInt(modelo.getValueAt(i,0).toString()));
+        pedidoB.setQuantidade(Integer.parseInt(modelo.getValueAt(i,3).toString()));
+        }
+    }
+
+final void limparFinalizar(){
+    txtTotal.setText("");
+    txtIdPedido.setText("");
+    btnFinalizar.setEnabled(false);
+    modelo.setNumRows(0);
 }
+
+}
+
 

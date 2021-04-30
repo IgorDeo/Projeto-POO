@@ -24,6 +24,7 @@ public class Principal extends javax.swing.JFrame {
     EntregadorTela entregadorTela;
     CardapioTela cardapioTela;
     PedidoTela pedidoTela;
+    TelaPedidos telaPedidos;
     
     public Principal() {
         initComponents();
@@ -58,6 +59,7 @@ public class Principal extends javax.swing.JFrame {
         menuCaixa = new javax.swing.JMenu();
         menuPedidos = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
+        menuPedidosAbertos = new javax.swing.JMenu();
         menuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -125,6 +127,20 @@ public class Principal extends javax.swing.JFrame {
         menuRelatorios.setText("Relatórios");
         jMenuBar1.add(menuRelatorios);
 
+        menuPedidosAbertos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_pedidos.png"))); // NOI18N
+        menuPedidosAbertos.setText("Pedidos Abertos");
+        menuPedidosAbertos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuPedidosAbertosMouseClicked(evt);
+            }
+        });
+        menuPedidosAbertos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPedidosAbertosActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(menuPedidosAbertos);
+
         menuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_sair.png"))); // NOI18N
         menuSair.setText("Sair");
         menuSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -140,7 +156,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 479, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,10 +195,20 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSairMouseClicked
 
     private void menuPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPedidosActionPerformed
-        pedidoTela = new PedidoTela();
+        pedidoTela = new PedidoTela(1);
         telaPrincipal.add(pedidoTela);
         pedidoTela.setVisible(true);
     }//GEN-LAST:event_menuPedidosActionPerformed
+
+    private void menuPedidosAbertosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuPedidosAbertosMouseClicked
+       telaPedidos = new TelaPedidos();
+       telaPrincipal.add(telaPedidos);
+       telaPedidos.setVisible(true);
+    }//GEN-LAST:event_menuPedidosAbertosMouseClicked
+
+    private void menuPedidosAbertosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPedidosAbertosActionPerformed
+       
+    }//GEN-LAST:event_menuPedidosAbertosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,6 +254,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuEntregador;
     private javax.swing.JMenuItem menuFuncionarios;
     private javax.swing.JMenuItem menuPedidos;
+    private javax.swing.JMenu menuPedidosAbertos;
     private javax.swing.JMenu menuRelatorios;
     private javax.swing.JMenu menuSair;
     // End of variables declaration//GEN-END:variables

@@ -1,6 +1,7 @@
 
 package Controller;
 
+import Beans.PedidoBeans;
 import DAO.PedidoDAO;
 import GUI.PedidoTela;
 import java.util.List;
@@ -62,5 +63,9 @@ public class PedidoController {
             return false;
         }
         return true;
+    }
+    
+    public void controleDePedido(String idCliente, String idFuncionario, String total, int tamanhoTabela, PedidoBeans pedidoB){
+        pedidoD.cadastrarPedido(idCliente, idFuncionario, total, tamanhoTabela, pedidoB);
     }
 }

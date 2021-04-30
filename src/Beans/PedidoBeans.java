@@ -26,20 +26,20 @@ public class PedidoBeans {
         quantidade = new ArrayList<>();
     }
 
-    public List<Integer> getIdCardapio() {
-        return idCardapio;
+    public int getIdCardapio(int posicao){
+        return idCardapio.get(posicao);
     }
 
-    public void setIdCardapio(List<Integer> idCardapio) {
-        this.idCardapio = idCardapio;
+    public void setIdCardapio(int idCardapio) {
+        this.idCardapio.add(idCardapio);
+    }
+    
+    public int getQuantidade(int posicao){
+        return quantidade.get(posicao);
     }
 
-    public List<Integer> getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(List<Integer> quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantidade(int quantidade) {
+        this.quantidade.add(quantidade);
     }
        
     
