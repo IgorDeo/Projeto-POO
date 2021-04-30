@@ -4,4 +4,5 @@
 
 ## Participantes: Igor Deo Alves e Vitor Souza
 
+## Versão JavaJDK: 16
 ## Versão MySQLConnector: 8.0.24
