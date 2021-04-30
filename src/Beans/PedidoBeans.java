@@ -1,6 +1,9 @@
 
 package Beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author igord
@@ -15,7 +18,31 @@ public class PedidoBeans {
     private String hora;
     private double valor;
     private String status;
+    private List<Integer> idCardapio;
+    private List<Integer> quantidade;
+    
+    public PedidoBeans(){
+        idCardapio = new ArrayList<>();
+        quantidade = new ArrayList<>();
+    }
 
+    public List<Integer> getIdCardapio() {
+        return idCardapio;
+    }
+
+    public void setIdCardapio(List<Integer> idCardapio) {
+        this.idCardapio = idCardapio;
+    }
+
+    public List<Integer> getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(List<Integer> quantidade) {
+        this.quantidade = quantidade;
+    }
+       
+    
     public int getIdPedido() {
         return idPedido;
     }
