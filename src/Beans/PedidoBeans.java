@@ -1,13 +1,9 @@
-
 package Beans;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author igord
- */
+
 public class PedidoBeans {
     
     private int idPedido;

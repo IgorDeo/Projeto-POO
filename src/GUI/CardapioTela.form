@@ -273,9 +273,14 @@
     <Component class="javax.swing.JComboBox" name="cbTipo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
+          <StringArray count="7">
             <StringItem index="0" value="Selecione um tipo"/>
-            <StringItem index="1" value="Pizza"/>
+            <StringItem index="1" value="Aperitivos"/>
+            <StringItem index="2" value="Steaks"/>
+            <StringItem index="3" value="Burgers &amp; Sandwiches"/>
+            <StringItem index="4" value="Veggie"/>
+            <StringItem index="5" value="Sobremesas"/>
+            <StringItem index="6" value="Bebidas"/>
           </StringArray>
         </Property>
       </Properties>

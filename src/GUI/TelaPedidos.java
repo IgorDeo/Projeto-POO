@@ -1,16 +1,9 @@
-/*
- * Projeto final de Programa��o Orientada a Objetos
- * Each line should be prefixed with  * 
- */
+
 package GUI;
 
 import Controller.TelaPedidosController;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author igord
- */
 public class TelaPedidos extends javax.swing.JInternalFrame {
     
     TelaPedidosController telaPedidosC;

@@ -1,7 +1,4 @@
-/*
- * Projeto final de Programa��o Orientada a Objetos
- * Each line should be prefixed with  * 
- */
+
 package GUI;
 
 import Beans.ClienteBeans;
@@ -14,10 +11,7 @@ import javax.swing.text.MaskFormatter;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author igord
- */
+
 public class ClienteTela extends javax.swing.JInternalFrame {
 
     MaskFormatter formatoTel;

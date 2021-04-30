@@ -1,7 +1,4 @@
-/*
- * Projeto final de Programa��o Orientada a Objetos
- * Each line should be prefixed with  * 
- */
+
 package DAO;
 
 import Beans.ClienteBeans;
@@ -17,10 +14,6 @@ import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author igord
- */
 public class ClienteDAO {
     
     
@@ -44,8 +37,7 @@ public class ClienteDAO {
             JOptionPane.showMessageDialog(null, "Registro Salvo com Sucesso", "Sucesso!", 1, new ImageIcon(getClass().getResource("/Icones/ok.png")));
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex, "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
-            //JOptionPane.showMessageDialog(null, "Erro ao Conectar ao Banco de Dados", "Erro", 0, new ImageIcon("imagens/ico_sair.png"));
+            JOptionPane.showMessageDialog(null, "Erro ao Cadastrar Cliente", "Erro", 0, new ImageIcon("imagens/ico_sair.png"));
         }
         
     }
@@ -138,7 +130,6 @@ public class ClienteDAO {
             JOptionPane.showMessageDialog(null, "Registro Editado com Sucesso", "Sucesso!", 1, new ImageIcon(getClass().getResource("/Icones/ok.png")));
             
         } catch (SQLException ex) {
-            //JOptionPane.showMessageDialog(null, ex, "Erro", 0, new ImageIcon("imagens/ico_sair.png"));
             JOptionPane.showMessageDialog(null, "Erro ao Editar ao Banco de Dados", "Erro", 0, new ImageIcon(getClass().getResource("/Icones/ico_sair.png")));
         }
     }

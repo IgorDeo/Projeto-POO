@@ -1,7 +1,4 @@
-/*
- * Projeto final de Programa��o Orientada a Objetos
- * Each line should be prefixed with  * 
- */
+
 package Controller;
 
 import Beans.ClienteBeans;

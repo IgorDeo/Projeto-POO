@@ -1,9 +1,5 @@
-/*
- * Projeto final de Programa��o Orientada a Objetos
- * Each line should be prefixed with  * 
- */
-package Beans;
 
+package Beans;
 
 public class ClienteBeans {
     private int id;

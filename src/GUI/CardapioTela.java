@@ -139,7 +139,7 @@ public class CardapioTela extends javax.swing.JInternalFrame {
             }
         });
 
-        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um tipo", "Pizza" }));
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um tipo", "Aperitivos", "Steaks", "Burgers & Sandwiches", "Veggie", "Sobremesas", "Bebidas" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -260,7 +260,7 @@ public class CardapioTela extends javax.swing.JInternalFrame {
     private void btnCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrar1ActionPerformed
         popularCardapioBeans();
         cardapioC.verificarDados(cardapioB);
-        limparCampos();
+        //limparCampos();
     }//GEN-LAST:event_btnCadastrar1ActionPerformed
 
 

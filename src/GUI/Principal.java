@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GUI;
 
 import Utilitarios.FundoTela;
@@ -12,10 +8,6 @@ import java.awt.GridLayout;
 import javax.swing.ImageIcon;
 
 
-/**
- *
- * @author igord
- */
 public class Principal extends javax.swing.JFrame {
 
     FundoTela telaPrincipal;

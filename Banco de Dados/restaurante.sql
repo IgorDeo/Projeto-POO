@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Abr-2021 às 15:37
+-- Tempo de geração: 01-Maio-2021 às 01:14
 -- Versão do servidor: 10.4.18-MariaDB
 -- versão do PHP: 8.0.3
 
@@ -34,6 +34,25 @@ CREATE TABLE `cardapio` (
   `card_valor` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `cardapio`
+--
+
+INSERT INTO `cardapio` (`card_id`, `card_descricao`, `card_tipo`, `card_valor`) VALUES
+(1, 'Bloomin\' Onion', 'Aperitivos', '49.90'),
+(2, 'Aussie Cheese Fries', 'Aperitivos', '58.50'),
+(3, 'New York Strip Steak', 'Steaks', '89.90'),
+(4, 'Herb Crusted Filet', 'Steaks', '71.90'),
+(5, 'Firecracker Shrimp Burguer', 'Burgers & Sandwiches', '48.90'),
+(6, 'Veggie Blue Cheese Burger', 'Burgers & Sandwiches', '44.00'),
+(7, 'Jack Nachos Veggie', 'Veggie', '45.60'),
+(8, 'S\'mores', 'Sobremesas', '29.90'),
+(9, 'Super Milkshake', 'Sobremesas', '20.90'),
+(10, 'Coca Cola 1L', 'Bebidas', '13.75'),
+(11, 'Guaraná 1L', 'Bebidas', '13.75'),
+(12, 'Chá de Cranberry 1L', 'Bebidas', '12.50'),
+(13, 'Chopp Zero Grau', 'Bebidas', '20.00');
+
 -- --------------------------------------------------------
 
 --
@@ -54,12 +73,10 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`cliente_id`, `cliente_nome`, `cliente_rua`, `cliente_bairro`, `cliente_telefone`, `cliente_data_cadastro`) VALUES
-(2, 'Igor Deo', 'Rua José Higino', 'Tijuca', '(22) 22222-2222', '2021-04-26'),
-(3, 'Vitor', 'dasdas', 'dasdas', '(22) 22222-2222', '2021-04-26'),
-(4, 'Clara Lino', 'Rua Scylla', 'Itaipu', '(22) 22222-2222', '2021-04-26'),
-(5, 'Jorge', 'Rua jose', 'Tijuca', '(11) 11111-1111', '2021-04-26'),
-(6, 'Lucas Dias', 'aaaaaa', 'aaaaaa', '(22) 22222-2222', '2021-04-27'),
-(7, 'Marcos', 'Av', 'Grajau', '(21) 11111-2222', '2021-04-28');
+(1, 'Clara Mattos ', 'Rua Scylla Souza', 'Itaipu', '(21) 22222-2222', '2021-04-30'),
+(2, 'Igor Deo Alves', 'Rua José Higino', 'Tijuca', '(21) 22222-2222', '2021-04-30'),
+(3, 'Vitor Souza', 'Rua do Wilson Witzel', 'Grajáu', '(21) 22222-2222', '2021-04-30'),
+(4, 'Saulo Junior', 'Rua Scylla Souza', 'Itaipu', '(21) 22222-2222', '2021-04-30');
 
 -- --------------------------------------------------------
 
@@ -79,7 +96,7 @@ CREATE TABLE `entregadores` (
 --
 
 INSERT INTO `entregadores` (`entre_id`, `entre_nome`, `entre_status`, `entre_data_cadastro`) VALUES
-(1, 'Claudio cesar', 'Livre', '2021-04-27');
+(1, 'Buck Terceiro', 'Livre', '2021-04-30');
 
 -- --------------------------------------------------------
 
@@ -99,9 +116,9 @@ CREATE TABLE `funcionarios` (
 --
 
 INSERT INTO `funcionarios` (`fun_id`, `fun_nome`, `fun_cargo`, `fun_data_cadastro`) VALUES
-(1, 'Pietro Lancaster', 'Caixa', '2021-04-27'),
-(2, 'Vitor', 'Gerente', '2021-04-27'),
-(3, 'Igor', 'Administrador', '2021-04-28');
+(1, 'Clara Mattos', 'Gerente', '2021-04-30'),
+(2, 'Saulo Lino', 'Administrador', '2021-04-30'),
+(3, 'Sylvia Mattos', 'Caixa', '2021-04-30');
 
 -- --------------------------------------------------------
 
@@ -119,6 +136,14 @@ CREATE TABLE `item` (
   `item_quantidade` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `item`
+--
+
+INSERT INTO `item` (`item_id`, `item_ent_id`, `item_fun_id`, `item_cli_id`, `item_ped_id`, `item_card_id`, `item_quantidade`) VALUES
+(1, 1, 1, 1, 1, 1, 2),
+(2, 1, 1, 4, 2, 5, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -128,12 +153,21 @@ CREATE TABLE `item` (
 CREATE TABLE `pedidos` (
   `ped_id` int(10) NOT NULL,
   `ped_data` date NOT NULL,
+  `ped_hora` time NOT NULL,
   `ped_total` decimal(10,2) NOT NULL,
   `ped_cliente_id` int(10) NOT NULL,
   `ped_fun_id` int(10) NOT NULL,
   `ped_ent_id` int(10) NOT NULL,
   `ped_status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `pedidos`
+--
+
+INSERT INTO `pedidos` (`ped_id`, `ped_data`, `ped_hora`, `ped_total`, `ped_cliente_id`, `ped_fun_id`, `ped_ent_id`, `ped_status`) VALUES
+(1, '2021-04-30', '20:01:38', '99.80', 1, 1, 1, 'Pedido Aberto'),
+(2, '2021-04-30', '20:02:00', '48.90', 4, 1, 1, 'Pedido Aberto');
 
 --
 -- Índices para tabelas despejadas
@@ -191,13 +225,13 @@ ALTER TABLE `pedidos`
 -- AUTO_INCREMENT de tabela `cardapio`
 --
 ALTER TABLE `cardapio`
-  MODIFY `card_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `card_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `cliente_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `cliente_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `entregadores`
@@ -215,13 +249,13 @@ ALTER TABLE `funcionarios`
 -- AUTO_INCREMENT de tabela `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `ped_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ped_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restrições para despejos de tabelas
