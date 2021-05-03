@@ -20,7 +20,7 @@ public class Principal extends javax.swing.JFrame {
     
     public Principal() {
         initComponents();
-        //setExtendedState(JFrame.MAXIMIZED_BOTH); //Essa linha faz com que a tela inicie no tamanho do monitor utilizado
+        setExtendedState(JFrame.MAXIMIZED_BOTH); //Essa linha faz com que a tela inicie no tamanho do monitor utilizado
         setLayout(new GridLayout());
         telaPrincipal = new FundoTela("/Icones/background_inicial.jpg");
         getContentPane().add(telaPrincipal);
@@ -56,7 +56,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurante ID-VT");
-        setPreferredSize(new java.awt.Dimension(1600, 1000));
+        setPreferredSize(new java.awt.Dimension(1366, 768));
         setResizable(false);
 
         menuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/inserir-32.png"))); // NOI18N

@@ -1,6 +1,8 @@
 
 package GUI;
 
+import Beans.PedidoBeans;
+import Controller.PedidoController;
 import Controller.TelaPedidosController;
 import javax.swing.table.DefaultTableModel;
 
@@ -8,11 +10,15 @@ public class TelaPedidos extends javax.swing.JInternalFrame {
     
     TelaPedidosController telaPedidosC;
     DefaultTableModel modelo;
+    PedidoBeans pedidoB;
+    PedidoController pedidoC;
     
     public TelaPedidos() {
         initComponents();
         telaPedidosC = new TelaPedidosController();
         modelo = (DefaultTableModel)tabela.getModel();
+        pedidoB = new PedidoBeans();
+        pedidoC = new PedidoController();
          
         modelo.setNumRows(0);
         telaPedidosC.controlePesquisa(modelo);
@@ -42,7 +48,7 @@ public class TelaPedidos extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Codigo Pedido", "Data Pedido", "Hora Pedido", "Status"
+                "Id Pedido", "Data Pedido", "Hora Pedido", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -54,6 +60,11 @@ public class TelaPedidos extends javax.swing.JInternalFrame {
             }
         });
         tabela.setRowHeight(25);
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tabelaMousePressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabela);
 
         btnAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/refresh.png"))); // NOI18N
@@ -70,7 +81,7 @@ public class TelaPedidos extends javax.swing.JInternalFrame {
 
         btnFechar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/ico_sair.png"))); // NOI18N
-        btnFechar.setText("Fechar");
+        btnFechar.setText("Fechar Pedido");
         btnFechar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnFechar.setIconTextGap(1);
         btnFechar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -87,12 +98,12 @@ public class TelaPedidos extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAtualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnFechar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -102,7 +113,7 @@ public class TelaPedidos extends javax.swing.JInternalFrame {
                     .addComponent(btnAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnFechar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -115,8 +126,14 @@ public class TelaPedidos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        dispose();
+        int idAlterado;
+        idAlterado = Integer.parseInt(modelo.getValueAt(tabela.getSelectedRow(), 0).toString());
+        telaPedidosC.controleFechar(idAlterado);
     }//GEN-LAST:event_btnFecharActionPerformed
+
+    private void tabelaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMousePressed
+
+    }//GEN-LAST:event_tabelaMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

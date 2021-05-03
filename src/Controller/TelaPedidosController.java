@@ -1,6 +1,7 @@
 
 package Controller;
 
+import Beans.PedidoBeans;
 import DAO.TelaPedidosDAO;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,4 +17,8 @@ public class TelaPedidosController {
      public void controlePesquisa(DefaultTableModel Modelo){
         telaPedidosD.mostrarPedidos(Modelo);
     }
+     
+     public void controleFechar(int idAlterado){
+         telaPedidosD.fecharPedido(idAlterado);
+     }
 }
