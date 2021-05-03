@@ -5,7 +5,8 @@
 ## Participantes: Igor Deo Alves e Vitor Souza
 
 ## Assista ao vídeo do nosso projeto:
-https://img.youtube.com/vi/<7hUaXMpcgmo>/maxresdefault.jpg
+[![Watch the video](https://img.youtube.com/vi/7hUaXMpcgmo/maxresdefault.jpg)](https://youtu.be/7hUaXMpcgmo)
+
 
 ## Versão JavaJDK: 16
 ## Versão MySQLConnector: 8.0.24
