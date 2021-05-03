@@ -4,7 +4,7 @@
 
 ## Participantes: Igor Deo Alves e Vitor Almeida de Souza
 
-## [Link para o Relatório](https://docs.google.com/document/d/191dAE8jluVnrpgxpGQyBsdD7M7St0GZyrDNoX4p0n-E/edit?usp=sharing)
+## [Link para o Relatório do Projeto](https://docs.google.com/document/d/191dAE8jluVnrpgxpGQyBsdD7M7St0GZyrDNoX4p0n-E/edit?usp=sharing)
 
 ## Assista ao vídeo do nosso projeto:
 [![Assista ao video](https://img.youtube.com/vi/7hUaXMpcgmo/maxresdefault.jpg)](https://youtu.be/7hUaXMpcgmo)
